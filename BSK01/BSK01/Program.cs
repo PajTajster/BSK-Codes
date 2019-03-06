@@ -6,7 +6,7 @@ namespace BSK01
     class Program
     {
         static void Main(string[] args)
-        {
+        {/*
             int n, n1;
             Console.WriteLine("Give n:");
             try
@@ -50,6 +50,26 @@ namespace BSK01
             string decodedText = cc.Decode(encryptedText);
 
             Console.WriteLine("dekrypszon: " + decodedText);
+
+            Console.ReadKey();*/
+
+
+
+            string key, text;
+            Console.WriteLine("Give text: ");
+            text = Console.ReadLine();
+
+            Console.WriteLine("Give key: ");
+            key = Console.ReadLine();
+
+            VigenerCipher vc = new VigenerCipher(key);
+
+            string encodedText = vc.Encode(text);
+
+            Console.WriteLine("Encoded text: " + encodedText);
+
+            string decodedText = vc.Decode(text);
+            Console.WriteLine("Decoded text: " + decodedText);
 
             Console.ReadKey();
         }
