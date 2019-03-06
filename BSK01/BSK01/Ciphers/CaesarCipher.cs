@@ -9,23 +9,49 @@ namespace BSK01
         private readonly int letters = 72;
         private readonly int eulerTotient = 24;
 
+        private int key1Power;
 
+
+        private int key0;
         private int key1;
-        private int key2;
-        public CaesarCipher(int k1, int k2)
+        public CaesarCipher(int k0, int k1)
         {
+            key0 = k0;
             key1 = k1;
-            key2 = k2;
+
+            key1Power = Convert.ToInt32((Math.Ceiling(Math.Pow(key1, eulerTotient - 1))));
         }
+
+        // c = (a * k1 + k0) mod n
+
         public string Encode(string text)
         {
+            string encodedText = "";
 
-            return "";
+            for (int i = 0; i < text.Length; ++i) 
+            {
+                int value = (text[i] * key1) + key0;
+
+                encodedText += mod(value, letters);
+            }
+
+            return encodedText;
         }
+
+        // a = [c + (n - k0)] * key1power mod n
 
         public string Decode(string text)
         {
-            return "";
+            string decodedText = "";
+
+            for (int i = 0; i < text.Length; ++i)
+            {
+                int value = (text[i] * (letters - key0)) * key1Power;
+
+                decodedText += mod(value, letters);
+            }
+
+            return decodedText;
         }
         int mod(int x, int m)
         {
