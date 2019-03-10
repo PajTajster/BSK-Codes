@@ -93,7 +93,7 @@ namespace BSK01
                     return;
             }
 
-            Console.WriteLine("Word given: " + wordToEncrypt);
+            Console.WriteLine("\nWord given: " + wordToEncrypt);
 
             string encryptedWord = cs.Encrypt(wordToEncrypt);
             Console.WriteLine("Encrypted word: " + encryptedWord);

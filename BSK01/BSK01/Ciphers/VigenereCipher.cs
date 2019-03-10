@@ -6,54 +6,48 @@ namespace BSK01.Ciphers
 {
     class VigenereCipher : ICipher
     {
-        // encode: (K + W) mod n
-        // encode: (C - R) mod n
-
         private string key;
-        private readonly int letters = 26;
 
         public VigenereCipher(string k)
         {
-            key = k;
+            key = k.ToUpper();
         }
 
         public string Encrypt(string text)
         {
-            string encodedtext = "";
+            text = text.ToUpper();
 
-            for(int i = 0; i < text.Length; ++i)
+            StringBuilder encryptedText = new StringBuilder(text);
+            
+
+            int keyLetterPos = 0;
+            for (int i = 0; i < text.Length; ++i)
             {
-                bool isUpper = char.IsUpper(text[i]);
-
-                char offset = isUpper ? 'A' : 'a';
-
-                int keyIndex = i % key.Length;
-                int keyOffset = isUpper ? char.ToUpper(key[keyIndex]) : char.ToLower(key[keyIndex]);
-
-                char encodedLetter = (char)(((text[i] + keyOffset) - offset) % letters + offset);
-                encodedtext += encodedLetter;
+                if (Char.IsLetter(text[i]))
+                {
+                    encryptedText[i] = (char)((text[i] + key[keyLetterPos]) % 26 + 'A');
+                }
+                keyLetterPos = (keyLetterPos + 1) % key.Length;
             }
 
-            return encodedtext;
+            return encryptedText.ToString();
         }
         public string Decrypt(string text)
         {
-            string decodedText = "";
+            text = text.ToUpper();
+            StringBuilder decryptedText = new StringBuilder(text);
 
-            for (int i = 0; i < text.Length; ++i)
+            int keyLetterPos = 0;
+            for(int i = 0; i < text.Length; ++i)
             {
-                bool isUpper = char.IsUpper(text[i]);
-
-                char offset = isUpper ? 'A' : 'a';
-
-                int keyIndex = i % key.Length;
-                int keyOffset = isUpper ? char.ToUpper(key[keyIndex]) : char.ToLower(key[keyIndex]);
-
-                char encodedLetter = (char)(((text[i] - keyOffset) - offset) % letters + offset);
-                decodedText += encodedLetter;
+                if(Char.IsLetter(text[i]))
+                {
+                    decryptedText[i] = (char)((text[i] - key[keyLetterPos]) % 26 + 'A');
+                }
+                keyLetterPos = (keyLetterPos + 1) % key.Length;
             }
 
-            return decodedText;
+            return decryptedText.ToString();
         }
     }
 }
