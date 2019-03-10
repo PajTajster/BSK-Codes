@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BSK01.Ciphers
 {
-    class TranspositionCipher2
+    class TranspositionCipher2 : ICipher
     {
         string key;
 
@@ -13,11 +13,11 @@ namespace BSK01.Ciphers
             key = k;
         }
 
-        string Encode(string text)
+        public string Encrypt(string text)
         {
             return "";
         }
-        string Decode(string text)
+        public string Decrypt(string text)
         {
             return "";
         }

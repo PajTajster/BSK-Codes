@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BSK01.Ciphers
 {
-    class VigenerCipher
+    class VigenereCipher : ICipher
     {
         // encode: (K + W) mod n
         // encode: (C - R) mod n
@@ -12,12 +12,12 @@ namespace BSK01.Ciphers
         private string key;
         private readonly int letters = 26;
 
-        public VigenerCipher(string k)
+        public VigenereCipher(string k)
         {
             key = k;
         }
 
-        public string Encode(string text)
+        public string Encrypt(string text)
         {
             string encodedtext = "";
 
@@ -36,7 +36,7 @@ namespace BSK01.Ciphers
 
             return encodedtext;
         }
-        public string Decode(string text)
+        public string Decrypt(string text)
         {
             string decodedText = "";
 

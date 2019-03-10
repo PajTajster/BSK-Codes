@@ -7,8 +7,6 @@ namespace BSK01
     {
         static void Main(string[] args)
         {
-            int option = 0;
-
             Console.WriteLine("Choose alghorithm\n" +
                 "1. RailFence\n" +
                 "2. Transposition A\n" +
@@ -20,61 +18,112 @@ namespace BSK01
 
             Console.WriteLine("Choose: ");
 
+            int option = ReadInt();
+
+            string wordToEncrypt = "";
+            Console.WriteLine("Enter your word: ");
+            wordToEncrypt = Console.ReadLine();
+
+            ICipher cs = new RailFenceCipher(0);
+
+            switch (option)
+            {
+                case 1:
+                    // RailFence
+                    {
+                        Console.WriteLine("Give key: ");
+                        int key = ReadInt();
+
+                        cs = new RailFenceCipher(key);
+
+                        Console.WriteLine("Using RailFence Cipher");
+                    }
+                    break;
+                case 2:
+                    // Transposition A
+                    {
+
+                        Console.WriteLine("Using Transposition A Cipher");
+                    }
+                    break;
+                case 3:
+                    // Transposition B
+                    {
+
+                        Console.WriteLine("Using Transposition B Cipher");
+                    }
+                    break;
+                case 4:
+                    // Transposition C
+                    {
+
+                        Console.WriteLine("Using Transposition C Cipher");
+                    }
+                    break;
+                case 5:
+                    // Caesar
+                    {
+                        Console.WriteLine("Give key 1: ");
+                        int key0 = ReadInt();
+
+                        Console.WriteLine("Give key 2: ");
+                        int key1 = ReadInt();
+
+                        cs = new CaesarCipher(key0, key1);
+                        Console.WriteLine("Using Caesar Cipher");
+                    }
+                    break;
+                case 6:
+                    // Vigenere
+                    {
+                        Console.WriteLine("Give key: ");
+                        string key = Console.ReadLine();
+
+                        cs = new VigenereCipher(key);
+                        Console.WriteLine("Using Vigenere Cipher");
+                    }
+                    break;
+                case 7:
+                    Console.WriteLine("Bye!");
+                    Console.ReadKey();
+                    return;
+                default:
+                    Console.WriteLine("Wrong input!");
+                    Console.ReadKey();
+                    return;
+            }
+
+            Console.WriteLine("Word given: " + wordToEncrypt);
+
+            string encryptedWord = cs.Encrypt(wordToEncrypt);
+            Console.WriteLine("Encrypted word: " + encryptedWord);
+
+            string decryptedWord = cs.Decrypt(encryptedWord);
+            Console.WriteLine("Decrypted word: " + decryptedWord);
+
+
+            Console.ReadKey();
+            return;
+        }
+
+        static private int ReadInt()
+        {
+            int var = 0;
+
             try
             {
-                option = int.Parse(Console.ReadLine());
+                var = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
                 Console.WriteLine("Invalid input. rip");
                 Console.ReadKey();
 
-                return;
+                return var;
             }
 
-            string wordToEncrypt = "";
-            Console.WriteLine("Enter your word: ");
-            wordToEncrypt = Console.ReadLine();
-
-            switch (option)
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                default:
-                    break;
-            }
-            /*
-            string key, text;   
-            Console.WriteLine("Give text: ");
-            text = Console.ReadLine();
-
-            Console.WriteLine("Give key: ");
-            key = Console.ReadLine();
-
-            VigenerCipher vc = new VigenerCipher(key);
-
-            string encodedText = vc.Encode(text);
-
-            Console.WriteLine("Encoded text: " + encodedText);
-
-            string decodedText = vc.Decode(text);
-            Console.WriteLine("Decoded text: " + decodedText);
-
-            Console.ReadKey();*/
+            return var;
         }
-
 
     }
 }

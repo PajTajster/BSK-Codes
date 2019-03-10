@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BSK01
+namespace BSK01.Ciphers
 {
-    class CaesarCipher
+    class CaesarCipher : ICipher
     {
         private readonly int letters = 72;
         private readonly int eulerTotient = 24;
@@ -24,7 +24,7 @@ namespace BSK01
 
         // c = (a * k1 + k0) mod n
 
-        public string Encode(string text)
+        public string Encrypt(string text)
         {
             string encodedText = "";
 
@@ -40,7 +40,7 @@ namespace BSK01
 
         // a = [c + (n - k0)] * key1power mod n
 
-        public string Decode(string text)
+        public string Decrypt(string text)
         {
             string decodedText = "";
 

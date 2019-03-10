@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BSK01.Ciphers
 {
-    class RailFenceCipher
+    class RailFenceCipher : ICipher
     {
         private int key;
 
@@ -13,7 +13,7 @@ namespace BSK01.Ciphers
             key = k;
         }
 
-        public string Encode(String text)
+        public string Encrypt(String text)
         {
             char[,] tab = new char[text.Length, key];
 
@@ -61,7 +61,7 @@ namespace BSK01.Ciphers
             return newtext;
         }
 
-        public string Decode(string text)
+        public string Decrypt(string text)
         {
             char[,] tab = new char[text.Length, key];
 
