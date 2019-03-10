@@ -6,6 +6,7 @@ namespace BSK01.Ciphers
 {
     class VigenereCipher : ICipher
     {
+        private const int letters = 26;
         private string key;
 
         public VigenereCipher(string k)
@@ -25,7 +26,7 @@ namespace BSK01.Ciphers
             {
                 if (Char.IsLetter(text[i]))
                 {
-                    encryptedText[i] = (char)((text[i] + key[keyLetterPos]) % 26 + 'A');
+                    encryptedText[i] = (char)(this.Modulo((text[i] + key[keyLetterPos]), letters) + 'A');
                 }
                 keyLetterPos = (keyLetterPos + 1) % key.Length;
             }
@@ -36,13 +37,13 @@ namespace BSK01.Ciphers
         {
             text = text.ToUpper();
             StringBuilder decryptedText = new StringBuilder(text);
-
+            
             int keyLetterPos = 0;
             for(int i = 0; i < text.Length; ++i)
             {
                 if(Char.IsLetter(text[i]))
                 {
-                    decryptedText[i] = (char)((text[i] - key[keyLetterPos]) % 26 + 'A');
+                    decryptedText[i] = (char)(this.Modulo((text[i] - key[keyLetterPos]), letters) + 'A');
                 }
                 keyLetterPos = (keyLetterPos + 1) % key.Length;
             }
