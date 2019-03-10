@@ -6,8 +6,12 @@ namespace BSK01.Ciphers
 {
     class CaesarCipher : ICipher
     {
-        private readonly int letters = 72;
-        private readonly int eulerTotient = 24;
+        // f(n) - 1
+        private readonly int eulerTotient = 23;
+        private readonly int letters = 78;
+
+        private const int startingLetter = 48;
+        private char[] alphabet;
 
         private int key1Power;
 
@@ -19,44 +23,50 @@ namespace BSK01.Ciphers
             key0 = k0;
             key1 = k1;
 
-            key1Power = Convert.ToInt32((Math.Ceiling(Math.Pow(key1, eulerTotient - 1))));
+
+            alphabet = new char[letters];
+            for(int i = 0; i < letters; ++i)
+            {
+                alphabet[i] = (char)(startingLetter + i);
+            }
+
+            key1Power = key1;
+            for (int i = 0; i < eulerTotient; ++i) 
+            {
+                key1Power = (key1Power * key1) % letters;
+            }
         }
 
         // c = (a * k1 + k0) mod n
 
         public string Encrypt(string text)
         {
-            string encodedText = "";
+            string encryptedText = "";
 
             for (int i = 0; i < text.Length; ++i) 
             {
                 int value = (text[i] * key1) + key0;
 
-                encodedText += mod(value, letters);
+                encryptedText += alphabet[this.Modulo(value, letters)];
             }
 
-            return encodedText;
+            return encryptedText;
         }
 
         // a = [c + (n - k0)] * key1power mod n
 
         public string Decrypt(string text)
         {
-            string decodedText = "";
+            string decryptedText = "";
 
             for (int i = 0; i < text.Length; ++i)
             {
                 int value = (text[i] * (letters - key0)) * key1Power;
 
-                decodedText += mod(value, letters);
+                decryptedText += alphabet[this.Modulo(value, letters)];
             }
 
-            return decodedText;
-        }
-        int mod(int x, int m)
-        {
-            int r = x % m;
-            return r < 0 ? r + m : r;
+            return decryptedText;
         }
 
     }
