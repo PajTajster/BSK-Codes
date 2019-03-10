@@ -10,8 +10,7 @@ namespace BSK01.Ciphers
         private readonly int eulerTotient = 23;
         private readonly int letters = 78;
 
-        private const int startingLetter = 48;
-        private char[] alphabet;
+        private readonly int startingLetter = 48;
 
         private int key1Power;
 
@@ -22,13 +21,6 @@ namespace BSK01.Ciphers
         {
             key0 = k0;
             key1 = k1;
-
-
-            alphabet = new char[letters];
-            for(int i = 0; i < letters; ++i)
-            {
-                alphabet[i] = (char)(startingLetter + i);
-            }
 
             key1Power = key1;
             for (int i = 0; i < eulerTotient; ++i) 
@@ -47,7 +39,7 @@ namespace BSK01.Ciphers
             {
                 int value = (text[i] * key1) + key0;
 
-                encryptedText += alphabet[this.Modulo(value, letters)];
+                encryptedText += (char)(this.Modulo(value, letters) + startingLetter);
             }
 
             return encryptedText;
@@ -63,7 +55,7 @@ namespace BSK01.Ciphers
             {
                 int value = (text[i] * (letters - key0)) * key1Power;
 
-                decryptedText += alphabet[this.Modulo(value, letters)];
+                decryptedText += (char)(this.Modulo(value, letters) + startingLetter);
             }
 
             return decryptedText;
