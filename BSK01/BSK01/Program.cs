@@ -42,6 +42,7 @@ namespace BSK01
                 case 2:
                     // Transposition A
                     {
+                        cs = new TranspositionCipherA();
 
                         Console.WriteLine("Using Transposition A Cipher");
                     }

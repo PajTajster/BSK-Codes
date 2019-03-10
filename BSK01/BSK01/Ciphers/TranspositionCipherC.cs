@@ -4,11 +4,11 @@ using System.Text;
 
 namespace BSK01.Ciphers
 {
-    class TranspositionCipher2 : ICipher
+    class TranspositionCipherC : ICipher
     {
         string key;
 
-        public TranspositionCipher2(string k)
+        public TranspositionCipherC(string k)
         {
             key = k;
         }
