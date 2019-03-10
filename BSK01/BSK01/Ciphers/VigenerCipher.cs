@@ -30,7 +30,7 @@ namespace BSK01.Ciphers
                 int keyIndex = i % key.Length;
                 int keyOffset = isUpper ? char.ToUpper(key[keyIndex]) : char.ToLower(key[keyIndex]);
 
-                char encodedLetter = (char)(((text[i] + keyOffset) - offset) % 26 + offset);
+                char encodedLetter = (char)(((text[i] + keyOffset) - offset) % letters + offset);
                 encodedtext += encodedLetter;
             }
 
@@ -49,7 +49,7 @@ namespace BSK01.Ciphers
                 int keyIndex = i % key.Length;
                 int keyOffset = isUpper ? char.ToUpper(key[keyIndex]) : char.ToLower(key[keyIndex]);
 
-                char encodedLetter = (char)(((text[i] - keyOffset) - offset) % 26 + offset);
+                char encodedLetter = (char)(((text[i] - keyOffset) - offset) % letters + offset);
                 decodedText += encodedLetter;
             }
 

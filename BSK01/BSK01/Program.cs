@@ -6,12 +6,23 @@ namespace BSK01
     class Program
     {
         static void Main(string[] args)
-        {/*
-            int n, n1;
-            Console.WriteLine("Give n:");
+        {
+            int option = 0;
+
+            Console.WriteLine("Choose alghorithm\n" +
+                "1. RailFence\n" +
+                "2. Transposition A\n" +
+                "3. Transposition B\n" +
+                "4. Transposition C\n" +
+                "5. Caesar\n" +
+                "6. Vigener\n" +
+                "7. Exit\n");
+
+            Console.WriteLine("Choose: ");
+
             try
             {
-                n = int.Parse(Console.ReadLine());
+                option = int.Parse(Console.ReadLine());
             }
             catch (Exception)
             {
@@ -20,42 +31,32 @@ namespace BSK01
 
                 return;
             }
-            Console.WriteLine("Give n2: ");
-            try
+
+            string wordToEncrypt = "";
+            Console.WriteLine("Enter your word: ");
+            wordToEncrypt = Console.ReadLine();
+
+            switch (option)
             {
-                n1 = int.Parse(Console.ReadLine());
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                    break;
             }
-            catch (Exception)
-            {
-                Console.WriteLine("Invalid input. rip");
-                Console.ReadKey();
-
-                return;
-            }
-
-
-            Console.WriteLine("Give string:");
-            string textToEncode;
-            textToEncode = Console.ReadLine();
-
-            CaesarCipher cc = new CaesarCipher(n, n1);
-
-            RailFenceCipher rfc = new RailFenceCipher(n);
-
-            string encryptedText = cc.Encode(textToEncode);
-
-            Console.WriteLine("enkrypszon: " + encryptedText);
-
-
-            string decodedText = cc.Decode(encryptedText);
-
-            Console.WriteLine("dekrypszon: " + decodedText);
-
-            Console.ReadKey();*/
-
-
-
-            string key, text;
+            /*
+            string key, text;   
             Console.WriteLine("Give text: ");
             text = Console.ReadLine();
 
@@ -71,7 +72,7 @@ namespace BSK01
             string decodedText = vc.Decode(text);
             Console.WriteLine("Decoded text: " + decodedText);
 
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
 
 
