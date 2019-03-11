@@ -13,7 +13,7 @@ namespace BSK01
                 "3. Transposition B\n" +
                 "4. Transposition C\n" +
                 "5. Caesar\n" +
-                "6. Vigener\n" +
+                "6. Vigenere\n" +
                 "7. Exit\n");
 
             Console.WriteLine("Choose: ");
@@ -31,7 +31,7 @@ namespace BSK01
                 case 1:
                     // RailFence
                     {
-                        Console.WriteLine("Give key: ");
+                        Console.WriteLine("Give key [Integer]: ");
                         int key = ReadInt();
 
                         cs = new RailFenceCipher(key);
@@ -50,7 +50,7 @@ namespace BSK01
                 case 3:
                     // Transposition B
                     {
-                        Console.WriteLine("Give key: ");
+                        Console.WriteLine("Give key [String, Letters only]: ");
                         string key = Console.ReadLine();
 
                         cs = new TranspositionCipherB(key);
@@ -61,6 +61,10 @@ namespace BSK01
                 case 4:
                     // Transposition C
                     {
+                        Console.WriteLine("Give key [String, Letters only]: ");
+                        string key = Console.ReadLine();
+
+                        cs = new TranspositionCipherC(key);
 
                         Console.WriteLine("Using Transposition C Cipher");
                     }
@@ -68,10 +72,10 @@ namespace BSK01
                 case 5:
                     // Caesar
                     {
-                        Console.WriteLine("Give key 1: ");
+                        Console.WriteLine("Give key 1 [Integer]: ");
                         int key0 = ReadInt();
 
-                        Console.WriteLine("Give key 2: ");
+                        Console.WriteLine("Give key 2 [Integer]: ");
                         int key1 = ReadInt();
 
                         cs = new CaesarCipher(key0, key1);
@@ -81,7 +85,7 @@ namespace BSK01
                 case 6:
                     // Vigenere
                     {
-                        Console.WriteLine("Give key: ");
+                        Console.WriteLine("Give key [String, Letters only]: ");
                         string key = Console.ReadLine();
 
                         cs = new VigenereCipher(key);

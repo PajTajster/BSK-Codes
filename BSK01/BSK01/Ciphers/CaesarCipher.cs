@@ -7,7 +7,7 @@ namespace BSK01.Ciphers
     class CaesarCipher : ICipher
     {
         // f(n) - 1
-        private readonly int eulerTotient = 23;
+        private readonly int eulerTotient = 31;
         private readonly int letters = 78;
 
         private readonly int startingLetter = 48;
