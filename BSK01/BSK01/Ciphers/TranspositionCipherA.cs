@@ -59,6 +59,27 @@ namespace BSK01.Ciphers
             string[] tab = new string[text.Length];
 
 
+            int offset = 0;
+            int currentLetter = 0;
+            int row = 0;
+            for (int i = 0; i < rows; ++i) 
+            {
+                for (int j = 0; j < key.Length; ++j) 
+                {
+                    offset = key.Length * row + key[j] - 1;
+                    if(offset < text.Length)
+                    {
+                        tab[offset] = text.Substring(currentLetter, 1);
+                        ++currentLetter;
+                    }
+                }
+                ++row;
+            }
+
+            for (int i = 0; i < tab.Length; ++i) 
+            {
+                decryptedText += tab[i];
+            }
 
             return decryptedText;
         }
