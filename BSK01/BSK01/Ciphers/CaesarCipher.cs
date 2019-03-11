@@ -6,13 +6,9 @@ namespace BSK01.Ciphers
 {
     class CaesarCipher : ICipher
     {
-        // f(n) - 1
-        private readonly int eulerTotient = 31;
-        private readonly int letters = 78;
+        private readonly int letters = 26;
 
-        private readonly int startingLetter = 48;
-
-        private int key1Power;
+        private readonly int startingLetter = 65;
 
 
         private int key0;
@@ -21,41 +17,54 @@ namespace BSK01.Ciphers
         {
             key0 = k0;
             key1 = k1;
-
-            key1Power = key1;
-            for (int i = 0; i < eulerTotient; ++i) 
-            {
-                key1Power = (key1Power * key1) % letters;
-            }
         }
 
-        // c = (a * k1 + k0) mod n
+        private int MulInverse(int a)
+        {
+            int result = 1;
+            for (int i = 1; i < letters + 1; ++i)
+            {
+                if ((a * i) % letters == 1)
+                {
+                    result = i;
+                    return result;
+                }
+            }
+            return result;
+        }
 
         public string Encrypt(string text)
         {
             string encryptedText = "";
 
-            for (int i = 0; i < text.Length; ++i) 
-            {
-                int value = (text[i] * key1) + key0;
+            char[] textArray = text.ToUpper().ToCharArray();
 
-                encryptedText += (char)(this.Modulo(value, letters) + startingLetter);
+            foreach (var item in textArray)
+            {
+                int x = Convert.ToInt32(item - startingLetter);
+                encryptedText += Convert.ToChar(((key1 * x + key0) % letters) + startingLetter);
             }
 
             return encryptedText;
         }
 
-        // a = [c + (n - k0)] * key1power mod n
-
         public string Decrypt(string text)
         {
             string decryptedText = "";
 
-            for (int i = 0; i < text.Length; ++i)
-            {
-                int value = (text[i] * (letters - key0)) * key1Power;
+            int key1Inverse = MulInverse(key1);
 
-                decryptedText += (char)(this.Modulo(value, letters) + startingLetter);
+            char[] charArray = text.ToUpper().ToCharArray();
+
+            foreach (var item in charArray)
+            {
+                int x = Convert.ToInt32(item - startingLetter);
+                if (x - key0 < 0) 
+                {
+                    x = Convert.ToInt32(x) + letters; 
+                }
+
+                decryptedText += Convert.ToChar(((key1Inverse * (x - key0)) % letters) + startingLetter);
             }
 
             return decryptedText;
