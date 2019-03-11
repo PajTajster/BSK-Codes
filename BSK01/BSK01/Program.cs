@@ -50,6 +50,10 @@ namespace BSK01
                 case 3:
                     // Transposition B
                     {
+                        Console.WriteLine("Give key: ");
+                        string key = Console.ReadLine();
+
+                        cs = new TranspositionCipherB(key);
 
                         Console.WriteLine("Using Transposition B Cipher");
                     }
