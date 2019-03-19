@@ -21,6 +21,8 @@ namespace BSK01
             int option = ReadInt();
 
             string wordToEncrypt = "";
+            string encryptedWord = "";
+            string decryptedWord = "";
             Console.WriteLine("Enter your word: ");
             wordToEncrypt = Console.ReadLine();
 
@@ -37,6 +39,22 @@ namespace BSK01
                         cs = new RailFenceCipher(key);
 
                         Console.WriteLine("Using RailFence Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+                        Console.WriteLine("Give key [Integer]: ");
+                        key = ReadInt();
+
+                        cs = new RailFenceCipher(key);
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 2:
@@ -45,6 +63,18 @@ namespace BSK01
                         cs = new TranspositionCipherA();
 
                         Console.WriteLine("Using Transposition A Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 3:
@@ -56,6 +86,22 @@ namespace BSK01
                         cs = new TranspositionCipherB(key);
 
                         Console.WriteLine("Using Transposition B Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+                        Console.WriteLine("Give key [String, Letters only]: ");
+                        key = Console.ReadLine();
+
+                        cs = new TranspositionCipherB(key);
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 4:
@@ -67,6 +113,22 @@ namespace BSK01
                         cs = new TranspositionCipherC(key);
 
                         Console.WriteLine("Using Transposition C Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+                        Console.WriteLine("Give key [String, Letters only]: ");
+                        key = Console.ReadLine();
+
+                        cs = new TranspositionCipherC(key);
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 5:
@@ -80,6 +142,26 @@ namespace BSK01
 
                         cs = new CaesarCipher(key0, key1);
                         Console.WriteLine("Using Caesar Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+
+                        Console.WriteLine("Give key 1 [Integer]: ");
+                        key0 = ReadInt();
+
+                        Console.WriteLine("Give key 2 [Integer]: ");
+                        key1 = ReadInt();
+
+                        cs = new CaesarCipher(key0, key1);
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 6:
@@ -90,6 +172,22 @@ namespace BSK01
 
                         cs = new VigenereCipher(key);
                         Console.WriteLine("Using Vigenere Cipher");
+
+                        Console.WriteLine("\nWord given: " + wordToEncrypt);
+
+                        encryptedWord = cs.Encrypt(wordToEncrypt);
+                        Console.WriteLine("Encrypted word: " + encryptedWord);
+
+
+                        Console.WriteLine("Give word to decrypt: ");
+                        wordToEncrypt = Console.ReadLine();
+                        Console.WriteLine("Give key [String, Letters only]: ");
+                        key = Console.ReadLine();
+
+                        cs = new VigenereCipher(key);
+
+                        decryptedWord = cs.Decrypt(wordToEncrypt);
+                        Console.WriteLine("Decrypted word: " + decryptedWord);
                     }
                     break;
                 case 7:
@@ -101,14 +199,6 @@ namespace BSK01
                     Console.ReadKey();
                     return;
             }
-
-            Console.WriteLine("\nWord given: " + wordToEncrypt);
-
-            string encryptedWord = cs.Encrypt(wordToEncrypt);
-            Console.WriteLine("Encrypted word: " + encryptedWord);
-
-            string decryptedWord = cs.Decrypt(encryptedWord);
-            Console.WriteLine("Decrypted word: " + decryptedWord);
 
 
             Console.ReadKey();

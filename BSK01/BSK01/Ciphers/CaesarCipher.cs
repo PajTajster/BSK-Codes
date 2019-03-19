@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Numerics;
 
 namespace BSK01.Ciphers
 {
@@ -9,6 +10,8 @@ namespace BSK01.Ciphers
         private readonly int letters = 26;
 
         private readonly int startingLetter = 65;
+
+        private readonly int eulerTotient = 12;
 
 
         private int key0;
@@ -63,8 +66,17 @@ namespace BSK01.Ciphers
                 {
                     x = Convert.ToInt32(x) + letters; 
                 }
+                int result1 = (x + (letters - key0));
 
-                decryptedText += Convert.ToChar(((key1Inverse * (x - key0)) % letters) + startingLetter);
+                BigInteger pow = BigInteger.Pow(key1, eulerTotient - 1);
+                BigInteger result2 = BigInteger.Multiply(result1, pow);
+
+                BigInteger modulo = result2 % letters;
+                object obj = modulo;
+                BigInteger big = (BigInteger)modulo;
+                int finalResult = (int)big;
+
+                decryptedText += Convert.ToChar(finalResult + startingLetter);
             }
 
             return decryptedText;
