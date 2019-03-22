@@ -13,6 +13,14 @@ namespace BSK01.Ciphers
         {
             key = k.ToUpper();
 
+            if (key.Length < 5)
+            {
+                int i = 0;
+                while (key.Length < 5)
+                    key += key[i++];
+                    
+            }
+
 
             keyOrder = new List<KeyValuePair<char, int>>();
             for (int i = 0; i < key.Length; ++i)
