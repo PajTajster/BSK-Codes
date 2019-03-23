@@ -61,7 +61,7 @@ namespace BSK02.Ciphers
                 }
             }
 
-            this.outAmount = inputX.Length;
+            this.outAmount = this.inputX.Length;
         }
 
         public string Encipher()
