@@ -23,7 +23,7 @@ namespace BSK02
             Console.WriteLine("Give X: ");
             n = Console.ReadLine();
 
-            SSC ssc = new SSC(outputPoly, outputSeed, n);
+            SynchronousStreamCipher ssc = new SynchronousStreamCipher(outputPoly, outputSeed, n);
             string result = ssc.Encipher();
 
            // LSFRGenerator generator = new LSFRGenerator(outputPoly, outputSeed, int.Parse(n));

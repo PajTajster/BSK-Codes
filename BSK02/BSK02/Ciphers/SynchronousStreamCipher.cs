@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BSK02.Ciphers
 {
-    class SSC
+    class SynchronousStreamCipher
     {
         private byte[] polynomial;
         private byte[] seed;
@@ -12,7 +12,7 @@ namespace BSK02.Ciphers
 
         private int outAmount;
 
-        public SSC(string polynomial, string seed, string inputX)
+        public SynchronousStreamCipher(string polynomial, string seed, string inputX)
         {
             if(inputX.Contains("test"))
             {
