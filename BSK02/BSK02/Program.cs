@@ -20,12 +20,15 @@ namespace BSK02
             Console.WriteLine("Give seed: ");
             outputSeed = Console.ReadLine();
             
-            Console.WriteLine("Give n: ");
+            Console.WriteLine("Give X: ");
             n = Console.ReadLine();
 
-            LSFRGenerator generator = new LSFRGenerator(outputPoly, outputSeed, int.Parse(n));
+            SSC ssc = new SSC(outputPoly, outputSeed, n);
+            string result = ssc.Encipher();
 
-            string[] result = generator.Generate();
+           // LSFRGenerator generator = new LSFRGenerator(outputPoly, outputSeed, int.Parse(n));
+
+           // string[] result = generator.Generate();
 
             foreach (var item in result)
             {
