@@ -144,17 +144,18 @@ namespace BSK02.Ciphers
                 for (int k = 1; k < bytesToXOR.Count; ++k)
                     resultXOR ^= bytesToXOR[k];
 
-
                 if (i < outAmount)
                 {
-                    outputY.Append(resultXOR ^ inputX[i]);
+                    resultXOR ^= inputX[i];
+
+                    outputY.Append(resultXOR);
 
                     // shift
                     for (int j = 0; j < rowLength - 1; ++j)
                     {
                         bytesArray[i + 1, j + 1] = bytesArray[i, j];
                     }
-                    bytesArray[i + 1, 0] = resultXOR;
+                    bytesArray[i + 1, 0] = inputX[i];
                 }
 
                 bytesToXOR.Clear();

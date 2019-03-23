@@ -23,8 +23,12 @@ namespace BSK02
             Console.WriteLine("Give X: ");
             n = Console.ReadLine();
 
-            SynchronousStreamCipher ssc = new SynchronousStreamCipher(outputPoly, outputSeed, n);
-            string result = ssc.Encipher();
+            CiphertextAutokey ca = new CiphertextAutokey(outputPoly, outputSeed, n);
+
+            string result = ca.Decipher();
+
+           // SynchronousStreamCipher ssc = new SynchronousStreamCipher(outputPoly, outputSeed, n);
+           // string result = ssc.Encipher();
 
            // LSFRGenerator generator = new LSFRGenerator(outputPoly, outputSeed, int.Parse(n));
 
@@ -32,7 +36,7 @@ namespace BSK02
 
             foreach (var item in result)
             {
-                Console.WriteLine(item);
+                Console.Write(item);
             }
         }
     }
