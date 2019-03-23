@@ -1,6 +1,7 @@
 ﻿using System;
 
 using BSK02.Generators;
+using BSK02.Ciphers;
 
 namespace BSK02
 {
