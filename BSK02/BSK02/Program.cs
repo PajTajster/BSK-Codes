@@ -41,7 +41,7 @@ namespace BSK02
                             }
 
                             Console.WriteLine("\nPress any key to continue.");
-                            Console.ReadKey();
+                            Console.ReadKey(true);
                         }
                         break;
                     case '2':
@@ -66,7 +66,7 @@ namespace BSK02
                             Console.WriteLine("Deciphered output: " + output);
 
                             Console.WriteLine("\nPress any key to continue.");
-                            Console.ReadKey();
+                            Console.ReadKey(true);
                         }
                         break;
                     case '3':
@@ -91,7 +91,7 @@ namespace BSK02
                             Console.WriteLine("Deciphered output: " + output);
 
                             Console.WriteLine("\nPress any key to continue.");
-                            Console.ReadKey();
+                            Console.ReadKey(true);
                         }
                         break;
                     case '4':
@@ -100,34 +100,6 @@ namespace BSK02
                         break;
                 }
             }
-
-        
-            /*
-
-            Console.WriteLine("Give polynomial: ");
-            outputPoly = Console.ReadLine();
-
-            Console.WriteLine("Give seed: ");
-            outputSeed = Console.ReadLine();
-            
-            Console.WriteLine("Give X: ");
-            n = Console.ReadLine();
-
-            CiphertextAutokey ca = new CiphertextAutokey(outputPoly, outputSeed, n);
-
-            string result = ca.Encipher();
-
-           // SynchronousStreamCipher ssc = new SynchronousStreamCipher(outputPoly, outputSeed, n);
-           // string result = ssc.Encipher();
-
-           // LSFRGenerator generator = new LSFRGenerator(outputPoly, outputSeed, int.Parse(n));
-
-           // string[] result = generator.Generate();
-
-            foreach (var item in result)
-            {
-                Console.Write(item);
-            */
         }
 
         private static string[] AskForUserInput(bool isCipher)
@@ -137,7 +109,7 @@ namespace BSK02
 
             while (!isCorrectInput)
             {
-                Console.WriteLine("Specify polynominal: ");
+                Console.WriteLine("Specify polynomial: ");
                 output[0] = Console.ReadLine();
 
                 Console.WriteLine("Specify seed:");
