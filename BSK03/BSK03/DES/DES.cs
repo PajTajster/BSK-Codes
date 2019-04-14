@@ -7,22 +7,22 @@ namespace BSK03.DES
 {
     class DES
     {
-        public BitArray Encrypt(BitArray data, BitArray key)
+        public bool[] Encrypt(bool[] data, bool[] key)
         {
             throw new NotImplementedException();
         }
-        public BitArray Decrypt(BitArray data, BitArray key)
+        public bool[] Decrypt(bool[] data, bool[] key)
         {
             throw new NotImplementedException();
         }
 
-        private BitArray FeistelFunction(BitArray dataRightPart, BitArray key)
+        private bool[] FeistelFunction(bool[] dataRightPart, bool[] key)
         {
             throw new NotImplementedException();
         }
-        private BitArray InitialPermute(BitArray data)
+        private bool[] InitialPermute(bool[] data)
         {
-            BitArray result = new BitArray(64);
+            bool[] result = new bool[64];
 
             for (int i = 0; i < 64; ++i)
             {
@@ -31,9 +31,9 @@ namespace BSK03.DES
 
             return result;
         }
-        private BitArray FinalPermute(BitArray data)
+        private bool[] FinalPermute(bool[] data)
         {
-            BitArray result = new BitArray(64);
+            bool[] result = new bool[64];
 
             for (int i = 0; i < 64; ++i)
             {
