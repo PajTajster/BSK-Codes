@@ -43,7 +43,7 @@ namespace BSK03.DES
                 for (int j = 0; j < 15; ++j)
                 {
                     leftSplit = rightSplit;
-                    rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys, i);
+                    rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys[i]);
 
                     for (int k = 0; k < 32; ++k)
                     {
@@ -52,7 +52,7 @@ namespace BSK03.DES
                 }
 
                 leftBuffer = leftSplit;
-                rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys, 15);
+                rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys[15]);
                 for (int j = 0; j < 32; ++j)
                 {
                     leftSplit[j] = leftBuffer[j] ^ rightBuffer[j];
@@ -113,7 +113,7 @@ namespace BSK03.DES
                 for (int j = 15; j > 0; --j)
                 {
                     leftSplit = rightSplit;
-                    rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys, i);
+                    rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys[i]);
 
                     for (int k = 0; k < 32; ++k)
                     {
@@ -122,7 +122,7 @@ namespace BSK03.DES
                 }
 
                 leftBuffer = leftSplit;
-                rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys, 0);
+                rightBuffer = FeistelFunction(rightSplit, keys.generatedKeys[0]);
                 for (int j = 0; j < 32; ++j)
                 {
                     leftSplit[j] = leftBuffer[j] ^ rightBuffer[j];
@@ -149,7 +149,7 @@ namespace BSK03.DES
             return output;
         }
 
-        private bool[] FeistelFunction(bool[] dataRightPart, bool[] key, int keyNumber)
+        private bool[] FeistelFunction(bool[] dataRightPart, bool[] key)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace BSK03.DES
         private bool[] cKeyPart = new bool[28];
         private bool[] dKeyPart = new bool[28];
 
-        public bool[] generatedKeys = new bool[16 * 48];
+        public List<bool[]> generatedKeys = new List<bool[]>();
 
         public KeyGenerator(bool[] key)
         {
@@ -29,6 +29,8 @@ namespace BSK03.DES
             bool[] connectedPartsKey = new bool[56];
             for (int i = 0; i < 16; ++i)
             {
+                bool[] buffer = new bool[48];
+
                 for (int j = 0; j < Permutations.leftShiftsIterationTable[i]; ++j)
                 {
                     cKeyPart = LeftShift(cKeyPart);
@@ -43,8 +45,9 @@ namespace BSK03.DES
 
                 for (int j = 0; j < 48; ++j)
                 {
-                    generatedKeys[(i * 16) + j] = connectedPartsKey[Permutations.permutedChoice2[j] - 1];
+                    buffer[j] = connectedPartsKey[Permutations.permutedChoice2[j] - 1];
                 }
+                generatedKeys.Add(buffer);
             }
         }
 
