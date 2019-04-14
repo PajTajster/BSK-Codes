@@ -6,7 +6,7 @@ namespace BSK03.DES
 {
     class Permutations
     {
-        public static readonly byte[] initialPermutation = new byte[]
+        public static readonly int[] initialPermutation = new int[]
         {
             58, 50, 42, 34, 26, 18, 10, 2,
             60, 52, 44, 36, 28, 20, 12, 4,
@@ -17,7 +17,7 @@ namespace BSK03.DES
             61, 53, 45, 37, 29, 21, 13, 5,
             63, 55, 47, 39, 31, 23, 15, 7
         };
-        public static readonly byte[] finalPermutation = new byte[]
+        public static readonly int[] finalPermutation = new int[]
         {
             40, 8, 48, 16, 56, 24, 64, 32,
             39, 7, 47, 15, 55, 23, 63, 31,
@@ -28,7 +28,7 @@ namespace BSK03.DES
             34, 2, 42, 10, 50, 18, 58, 26,
             33, 1, 41, 9, 49, 17, 57, 25
         };
-        public static readonly byte[] eBitSelectionTable = new byte[]
+        public static readonly int[] eBitSelectionTable = new int[]
         {
             32, 1, 2, 3, 4, 5,
             4, 5, 6, 7, 8, 9,
@@ -39,7 +39,7 @@ namespace BSK03.DES
             24, 25, 26, 27, 28, 29,
             28, 29, 30, 31, 32, 1
         };
-        public static readonly byte[] primitiveFunctionP = new byte[]
+        public static readonly int[] primitiveFunctionP = new int[]
         {
             16, 7, 20, 21,
             29, 12, 28, 17,
@@ -50,7 +50,7 @@ namespace BSK03.DES
             19, 13, 30, 6,
             22, 11, 4, 25
         };
-        public static readonly byte[] permutedChoice1 = new byte[]
+        public static readonly int[] permutedChoice1 = new int[]
         {
             // C
             57, 49, 41, 33, 25, 17, 9,
@@ -63,7 +63,7 @@ namespace BSK03.DES
             14, 6, 61, 53, 45, 37, 29,
             21, 13, 5, 28, 20, 12, 4
         };
-        public static readonly byte[] permutedChoice2 = new byte[]
+        public static readonly int[] permutedChoice2 = new int[]
         {
             14, 17, 11, 24, 1, 5,
             3, 28, 15, 6, 21, 10,
@@ -74,7 +74,7 @@ namespace BSK03.DES
             44, 49, 39, 56, 34, 53,
             46, 42, 50, 36, 29, 32
         };
-        public static readonly byte[] leftShiftsIterationTable = new byte[]
+        public static readonly int[] leftShiftsIterationTable = new int[]
         {
             1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1
         };
