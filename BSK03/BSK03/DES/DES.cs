@@ -151,7 +151,43 @@ namespace BSK03.DES
 
         private bool[] FeistelFunction(bool[] dataRightPart, bool[] key)
         {
-            throw new NotImplementedException();
+            bool[] extendedData = new bool[48];
+            for (int i = 0; i < 48; ++i)
+            {
+                extendedData[i] = dataRightPart[Permutations.eBitSelectionTable[i] - 1];
+            }
+
+            int[] xoredBits = new int[48];
+            for (int i = 0; i < 48; ++i)
+            {
+                xoredBits[i] = (extendedData[i] ^ key[i]) ? 1 : 0;
+            }
+
+            int resultOffset = 0;
+            string generatedData;
+            bool[] outputBeforePermutation = new bool[32];
+
+            for (int i = 0; i < 8; ++i)
+            {
+                int sBlockCol = xoredBits[i * 6] * 2 + xoredBits[i * 6 + 5];
+                int sBlockRow = xoredBits[i * 6 + 1] * 8 + xoredBits[i * 6 + 2] * 4 + xoredBits[i * 6 + 3] * 2 + xoredBits[i * 6 + 4];
+
+                int sBlockValue = SBlocks.sBlocks[i][sBlockCol, sBlockRow];
+                generatedData = Convert.ToString(sBlockValue, 2);
+
+                for (int j = 0; j < 4; ++j)
+                {
+                    outputBeforePermutation[resultOffset++] = generatedData == "1";
+                }
+            }
+
+            bool[] output = new bool[32];
+            for (int i = 0; i < 32; ++i)
+            {
+                output[i] = outputBeforePermutation[Permutations.primitiveFunctionP[i] - 1];
+            }
+
+            return output;
         }
         private bool[] InitialPermute(bool[] data)
         {
